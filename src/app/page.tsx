@@ -6,10 +6,12 @@ export default function Home() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const data = new FormData(e.currentTarget as HTMLFormElement)
+    const data = new FormData(e.currentTarget as HTMLFormElement);
+    const name = data.get("name");
+
     await Login({
-      name: data.get("name")
-    })
+      name: typeof name === "string" ? name : null
+    });
   }
 
   return (

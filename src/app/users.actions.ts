@@ -5,5 +5,7 @@ import { headers } from "next/headers";
 import { rateLimit } from "./utils/rateLimit";
 
 export const Login = async ({ name }: { name: string | null }) => {
-    console.log(rateLimit());
+
+    const ip = headers().get("x-forwarded-for") ?? "unknown"
+    console.log(rateLimit(ip));
 }
